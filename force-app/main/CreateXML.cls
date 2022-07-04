@@ -1,40 +1,6 @@
 public with sharing class CreateXML {
-    public string xmlstring { get; set;}
 
-    public CreateXML(){
-        DOM.Document doc = new DOM.Document();
-
-        dom.XmlNode shipment = doc.createRootElement('shipment', null, null);
-
-        shipment.addChildElement('username', null, null).addTextNode('ocapg_api');
-        shipment.addChildElement('userkey', null, null).addTextNode('6b60hofjo');
-        shipment.addChildElement('accountid', null, null).addTextNode('2126856');
-
-
-        dom.XmlNode stops = shipment.addChildElement('stops', null, null);
-            dom.XmlNode stop = stops.addChildElement('stop', null, null);
-
-            stop.addChildElement('city', null, null).addTextNode('ocapg_api');
-            stop.addChildElement('state', null, null).addTextNode('6b60hofjo');
-            stop.addChildElement('postal', null, null).addTextNode('2126856');
-            stop.addChildElement('country', null, null).addTextNode('2126856');
-
-            dom.XmlNode details= stops.addChildElement('details', null, null);
-                dom.XmlNode detail = details.addChildElement('detail', null, null); 
-
-                detail.addChildElement('cartons', null, null).addTextNode('ocapg_api');
-                detail.addChildElement('pallets', null, null).addTextNode('6b60hofjo');
-                detail.addChildElement('qty', null, null).addTextNode('2126856');
-                detail.addChildElement('weight', null, null).addTextNode('16000');
-                detail.addChildElement('length', null, null).addTextNode('40');
-                detail.addChildElement('width', null, null).addTextNode('40');
-                detail.addChildElement('height', null, null).addTextNode('40');
-                detail.addChildElement('freightclass', null, null).addTextNode('2126856');
-
-        xmlstring = doc.toXmlString();
-    }
-
-    public static String CreateXMLTest(){
+    public static String CreateXML(){
         DOM.Document doc = new DOM.Document();
 
         dom.XmlNode shipment = doc.createRootElement('shipment', null, null);

@@ -43,3 +43,174 @@
         </stop>
     </stops>
 </shipment>
+
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<shipment>
+    <username>ocapg_api</username> Authentication Block
+    <userkey>6b60hofjo</userkey> Authentication Block
+    <accountid>2126856</accountid> Authentication Block
+    <carriercode/> Leave empty or pass carrier SCAC to get single SCAC Rate
+    <stops>
+        <stop>
+            <city>MIAMI</city> Ship From / Origin
+            <state>FL</state> Ship From / Origin
+            <postal>33142</postal> Ship From / Origin
+            <country>USA</country> Ship From / Origin
+            <details>
+                <detail>
+                    <cartons/> Freight details / enter cartons for non-palletized freight
+                    <pallets>4</pallets> Freight details / number of pallets
+                    <qty/> optional / number of items contained within pallets
+                    <weight>16000</weight> Freight details / total weight of pallets within this block
+                    <length>40</length> Freight details / each pallet or carton dimension
+                    <width>40</width> Freight details / each pallet or carton dimension
+                    <height>40</height> Freight details / each pallet or carton dimension
+                    <freightclass>65</freightclass> Freight details / freight NMFC class
+                </detail>
+            </details>
+            <accessorials>
+                <inside>1</inside> Ship From / Pickup accessorial
+                <liftgate/> Ship From / Pickup accessorial
+
+                <notify/> Ship From / Pickup accessorial
+                <residence/> Ship From / Pickup accessorial
+            </accessorials>
+        </stop>
+        <stop>
+            <city>NEW PROVIDENCE</city> Ship To / Delivering to
+            <state>NJ</state> Ship To / Delivering to
+            <postal>07974</postal> Ship To / Delivering to
+            <country>USA</country> Ship To / Delivering to
+            <accessorials>
+                <inside/> Ship To / Destination accessorial
+                <liftgate/> Ship To / Destination accessorial
+                <notify/> Ship To / Destination accessorial
+                <residential/> Ship To / Destination accessorial
+            </accessorials>
+        </stop>
+    </stops>
+</shipment>
+
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Rates>
+    <Rate>
+        <Carrier>
+            <scac>CNWY</scac>
+            <name>Xpo Logistics Freight Inc</name>
+        </Carrier>
+        <Service>Xpo Logistics Freight Inc - Ground</Service>
+        <ServiceId/>
+        <TransitTime>3</TransitTime>
+        <Miles>1274</Miles>
+        <Charges>
+            <rate>1471.22</rate>
+            <stop>0.00</stop>
+            <fuel>422.98</fuel>
+            <total>2074.20</total>
+            <Accessorials>
+                <Accessorial>
+                    <id>22</id>
+                    <description>Orig Inside Pickup</description>
+                    <charge>180.00</charge>
+                </Accessorial>
+            </Accessorials>
+        </Charges>
+    </Rate>
+    <Rate>
+        <Carrier>
+            <scac>EXLA</scac>
+            <name>Estes Express Lines Inc</name>
+        </Carrier>
+        <Service>Estes Express Lines Inc - Ground</Service>
+        <ServiceId/>
+        <TransitTime>4</TransitTime>
+        <Miles>1274</Miles>
+        <Charges>
+            <rate>1580.19</rate>
+            <stop>0.00</stop>
+            <fuel>402.95</fuel>
+            <total>2233.14</total>
+            <Accessorials>
+                <Accessorial>
+                    <id>22</id>
+                    <description>Inside Pickup</description>
+                    <charge>250.00</charge>
+                </Accessorial>
+            </Accessorials>
+        </Charges>
+    </Rate>
+    <Rate>
+        <Carrier>
+            <scac>ODFL</scac>
+            <name>Old Dominion Freight Line Inc</name>
+        </Carrier>
+        <Service>Old Dominion Freight Line Inc - Ground</Service>
+        <ServiceId/>
+        <TransitTime>3</TransitTime>
+        <Miles>1274</Miles>
+        <Charges>
+            <rate>2576.40</rate>
+            <stop>0.00</stop>
+            <fuel>656.98</fuel>
+            <total>3783.38</total>
+            <Accessorials>
+                <Accessorial>
+                    <id>41</id>
+                    <description>Other</description>
+                    <charge>550.00</charge>
+                </Accessorial>
+            </Accessorials>
+        </Charges>
+    </Rate>
+    <Rate>
+        <Carrier>
+            <scac>RDWY</scac>
+            <name>Yrc Freight</name>
+        </Carrier>
+        <Service>Yrc Freight - Ground</Service>
+        <ServiceId/>
+        <TransitTime>3</TransitTime>
+        <Miles>1274</Miles>
+        <Charges>
+            <rate>1425.60</rate>
+            <stop>0.00</stop>
+            <fuel>363.53</fuel>
+            <total>2894.13</total>
+            <Accessorials>
+                <Accessorial>
+                    <id>22</id>
+                    <description>Inside Pickup Charge</description>
+                    <charge>1100.00</charge>
+                </Accessorial>
+                <Accessorial>
+                    <id>41</id>
+                    <description>Total Accessorial Charges</description>
+                    <charge>5.00</charge>
+                </Accessorial>
+            </Accessorials>
+        </Charges>
+    </Rate>
+    <Rate>
+        <Carrier>
+            <scac>SAIA</scac>
+            <name>Saia Motor Freight Lines</name>
+        </Carrier>
+        <Service>Saia Motor Freight Lines - Ground</Service>
+        <ServiceId/>
+        <TransitTime>3</TransitTime>
+        <Miles>1274</Miles>
+        <Charges>
+            <rate>2095.97</rate>
+            <stop>0.00</stop>
+            <fuel>534.34</fuel>
+            <total>3298.31</total>
+            <Accessorials>
+                <Accessorial>
+                    <id>22</id>
+                    <description>Inside Pickup Fee              566</description>
+                    <charge>668.00</charge>
+                </Accessorial>
+            </Accessorials>
+        </Charges>
+    </Rate>
+</Rates>
