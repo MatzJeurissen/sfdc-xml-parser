@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<shipment>
+    <username>ocapg_api</username> 
+    <userkey>6b60hofjo</userkey> 
+    <accountid>2126856</accountid> 
+    <carriercode/> 
+    <stops>
+        <stop>
+            <city>MIAMI</city> 
+            <state>FL</state> 
+            <postal>33142</postal> 
+            <country>USA</country> 
+            <details>
+                <detail>
+                    <cartons/> 
+                    <pallets>4</pallets> 
+                    <qty/> 
+                    <weight>16000</weight> 
+                    <length>40</length> 
+                    <width>40</width>
+                    <height>40</height> 
+                    <freightclass>65</freightclass> 
+                </detail>
+            </details>
+            <accessorials>
+                <inside>1</inside> 
+                <liftgate/> 
+                <notify/> 
+                <residence/> 
+            </accessorials>
+        </stop>
+        <stop>
+            <city>NEW PROVIDENCE</city> 
+            <state>NJ</state> 
+            <postal>07974</postal> 
+            <country>USA</country> 
+            <accessorials>
+                <inside/> 
+                <liftgate/> 
+                <notify/> 
+                <residential/> 
+            </accessorials>
+        </stop>
+    </stops>
+</shipment>
