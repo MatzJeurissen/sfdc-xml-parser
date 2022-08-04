@@ -1,6 +1,11 @@
 public with sharing class CreateXML {
 
     public static String CreateXML(){
+        // List<welisacommerce__Shopping_Cart__c> listShoppingCarts = ShoppingCartTotalWeight.GetTotalWeight();
+
+        // welisacommerce__Shopping_Cart__c shoppingCart = listShoppingCarts[0];
+
+        
         DOM.Document doc = new DOM.Document();
 
         dom.XmlNode shipment = doc.createRootElement('shipment', null, null);
@@ -56,5 +61,14 @@ public with sharing class CreateXML {
         String xmlstring = doc.toXmlString();
 
         return xmlstring;
+    }
+
+    public welisacommerce__Shopping_Cart__c getIdShoppingCart() {
+        String userId = UserInfo.getUserId();
+        List<welisacommerce__Shopping_Cart__c> shoppingCart = [SELECT Id, Name FROM welisacommerce__Shopping_Cart__c WHERE CreatedById = :userId];
+        
+
+
+        return shoppingCart[0];
     }
 }

@@ -1,6 +1,12 @@
-public class Charges {
+global class Charges {
     public String rate;
     public String stop;
     public String fuel;
-    public String total;
+
+    @AuraEnabled @InvocableVariable 
+    public Decimal total;
+
+    public Charges(Decimal total){
+        this.total = total;
+    }
 }
