@@ -2,14 +2,15 @@ public with sharing class CreateXML {
 
     public static String CreateXML(){
         List<welisacommerce__Shopping_Cart__c> listShoppingCarts = ShoppingCartTotalWeight.GetTotalWeight();
+        List<welisacommerce__Shopping_Cart_Item__c> listShoppingCartItems = ShoppingCartTotalWeight.getShoppingCartItems();
 
         welisacommerce__Shopping_Cart__c shoppingCart = listShoppingCarts[0];
 
         // String userId = UserInfo.getUserId();
 
-        String userId = shoppingCart.welisacommerce__Account__c;
+        // String userId = shoppingCart.welisacommerce__Account__c;
 
-        // String userId = '0015Y00002wzLu1QAE';
+        String userId = '0015Y00002wzLu1QAE';
 
         List<Account> userAccount = [SELECT BillingAddress, ShippingAddress, welisacommerce__Price_Book__r.isActive, welisacommerce__Price_Book__r.Location__r.Address__c, welisacommerce__Price_Book__r.Location__r.City__c,
         welisacommerce__Price_Book__r.Location__r.State_Province__c, welisacommerce__Price_Book__r.Location__r.Zip_Postal_Code__c,
@@ -60,24 +61,30 @@ public with sharing class CreateXML {
                 stop.addChildElement('postal', null, null).addTextNode(shippingZip);
                 stop.addChildElement('country', null, null).addTextNode('USA');
 
-                dom.XmlNode details= stop.addChildElement('details', null, null);
+                dom.XmlNode details = stop.addChildElement('details', null, null);
+                for (welisacommerce__Shopping_Cart_Item__c shoppingCartItem : listShoppingCartItems) {
+                    // System.debug(shoppingCartItem.unit_weight__c);
                     dom.XmlNode detail = details.addChildElement('detail', null, null); 
 
-                        detail.addChildElement('cartons', null, null).addTextNode('');
-                        detail.addChildElement('pallets', null, null).addTextNode('4');
-                        detail.addChildElement('qty', null, null).addTextNode('');
-                        detail.addChildElement('weight', null, null).addTextNode(shoppingCartTotalWeight);
-                        detail.addChildElement('length', null, null).addTextNode('40');
-                        detail.addChildElement('width', null, null).addTextNode('40');
-                        detail.addChildElement('height', null, null).addTextNode('40');
-                        detail.addChildElement('freightclass', null, null).addTextNode('65');
+                    detail.addChildElement('cartons', null, null).addTextNode('');
+                    detail.addChildElement('pallets', null, null).addTextNode('');
+                    detail.addChildElement('qty', null, null).addTextNode(String.valueOf(shoppingCartItem.welisacommerce__Quantity__c));
+                    detail.addChildElement('weight', null, null).addTextNode(String.valueOf(shoppingCartItem.Total_Weight__c));
+                    detail.addChildElement('length', null, null).addTextNode('');
+                    detail.addChildElement('width', null, null).addTextNode('');
+                    detail.addChildElement('height', null, null).addTextNode('');
+                    detail.addChildElement('freightclass', null, null).addTextNode('70');
+                    System.debug(detail);
+                }
+
 
                 dom.XmlNode accessorials = stop.addChildElement('accessorials', null, null);
 
-                    accessorials.addChildElement('inside', null, null).addTextNode('1');
+                    accessorials.addChildElement('inside', null, null).addTextNode('');
                     accessorials.addChildElement('liftgate', null, null).addTextNode('');
                     accessorials.addChildElement('notify', null, null).addTextNode('');
                     accessorials.addChildElement('residence', null, null).addTextNode('');    
+                    accessorials.addChildElement('hazmat', null, null).addTextNode('');  
 
 
             dom.XmlNode stop1 = stops.addChildElement('stop', null, null);
@@ -89,11 +96,13 @@ public with sharing class CreateXML {
 
                 dom.XmlNode accessorials1 = stop1.addChildElement('accessorials', null, null);
 
-                    accessorials1.addChildElement('inside', null, null).addTextNode('1');
+                    accessorials1.addChildElement('inside', null, null).addTextNode('');
                     accessorials1.addChildElement('liftgate', null, null).addTextNode('');
                     accessorials1.addChildElement('notify', null, null).addTextNode('');
                     accessorials1.addChildElement('residence', null, null).addTextNode('');      
         String xmlstring = doc.toXmlString();
+
+        System.debug(xmlstring);
 
         return xmlstring;
     }

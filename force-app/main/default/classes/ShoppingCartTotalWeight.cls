@@ -2,7 +2,9 @@ public with sharing class ShoppingCartTotalWeight {
     @AuraEnabled(cacheable=true)
     public static List<welisacommerce__Shopping_Cart__c> GetTotalWeight() {
         // List<welisacommerce__Shopping_Cart__c> cartList = [SELECT Id, Total_Weight__c FROM welisacommerce__Shopping_Cart__c WHERE id = :cartId];
-        String userId = UserInfo.getUserId();
+        // String userId = UserInfo.getUserId();
+        String userId = '0055Y00000HPjv6QAD';
+
         List<AggregateResult> cartWithHighestLastModifiedDate = [SELECT max(LastModifiedDate)maxDateTime FROM welisacommerce__Shopping_Cart__c WHERE of_Products__c != null AND createdbyid = :userId];
         Datetime highestDateTime = Datetime.valueOf(cartWithHighestLastModifiedDate[0].get('maxDateTime'));
 
@@ -22,6 +24,21 @@ public with sharing class ShoppingCartTotalWeight {
         cartList[0].Number_of_Products__c = numberOfProducts;
 
         return cartList;
+    }
+
+    public static List<welisacommerce__Shopping_Cart_Item__c> getShoppingCartItems() {
+        // List<welisacommerce__Shopping_Cart__c> cartList = [SELECT Id, Total_Weight__c FROM welisacommerce__Shopping_Cart__c WHERE id = :cartId];
+        // String userId = UserInfo.getUserId();
+        String userId = '0055Y00000HPjv6QAD';
+        List<AggregateResult> cartWithHighestLastModifiedDate = [SELECT max(LastModifiedDate)maxDateTime FROM welisacommerce__Shopping_Cart__c WHERE of_Products__c != null AND createdbyid = :userId];
+        Datetime highestDateTime = Datetime.valueOf(cartWithHighestLastModifiedDate[0].get('maxDateTime'));
+
+        List<welisacommerce__Shopping_Cart__c> cartList = [SELECT Id, Name,welisacommerce__Account__c FROM welisacommerce__Shopping_Cart__c WHERE CreatedById = :userId AND of_Products__c != null AND LastModifiedDate = :highestDateTime LIMIT 1];
+        Id itemId = cartList[0].Id;
+        List<welisacommerce__Shopping_Cart_Item__c> itemList = [SELECT Id, Unit_Weight__c, Total_Weight__c, welisacommerce__Quantity__c FROM welisacommerce__Shopping_Cart_Item__c WHERE welisacommerce__Shopping_Cart__c = :itemId];
+
+
+        return itemList;
     }
 
     @AuraEnabled(cacheable=true)

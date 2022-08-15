@@ -1,4 +1,4 @@
-public with sharing class Shipment {
+public class Shipment {
     public String userName;
     public String userKey;
     public String accountId;
