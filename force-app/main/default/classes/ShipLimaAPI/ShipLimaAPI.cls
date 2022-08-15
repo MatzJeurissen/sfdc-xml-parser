@@ -8,9 +8,12 @@ public with sharing class ShipLimaAPI {
         request.setHeader('Content-Type', 'application/xml'); 
         request.setMethod('POST');
         request.setBody(CreateXML.CreateXML()); 
+        request.setTimeout(100000);
 
         System.HttpResponse response = new System.Http().send(request); 
         String stringResponse = response.getBody();  
+
+        System.debug(stringResponse);
 
         List<Charges> lowestShippingCostCarrier = ShipLimaRate.returnLowestShippingCostCarrier(stringResponse);
 

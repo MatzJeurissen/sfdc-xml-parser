@@ -30,6 +30,8 @@ public with sharing class ShipLimaRate {
 
             if (totalAmount >= rate.charges.total) {
                 totalAmount = rate.charges.total;
+                charges.clear();
+
                 charges.add(rate.charges);
             }
         }
