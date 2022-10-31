@@ -9,7 +9,6 @@ public with sharing class CreateXML {
         // String userId = UserInfo.getUserId();
 
         // String userId = shoppingCart.welisacommerce__Account__c;
-
         String userId = '0015Y00002wzLu1QAE';
 
         List<Account> userAccount = [SELECT BillingAddress, ShippingAddress, welisacommerce__Price_Book__r.isActive, welisacommerce__Price_Book__r.Location__r.Address__c, welisacommerce__Price_Book__r.Location__r.City__c,
@@ -51,17 +50,18 @@ public with sharing class CreateXML {
         dom.XmlNode stops = shipment.addChildElement('stops', null, null);
             dom.XmlNode stop = stops.addChildElement('stop', null, null);
 
-            // stop.addChildElement('city', null, null).addTextNode(shippingCity);
-            // stop.addChildElement('state', null, null).addTextNode('FL');
-            // stop.addChildElement('postal', null, null).addTextNode('33142');
-            // stop.addChildElement('country', null, null).addTextNode('USA');
+            stop.addChildElement('city', null, null).addTextNode('Fort Dix');
+            stop.addChildElement('state', null, null).addTextNode('FL');
+            stop.addChildElement('postal', null, null).addTextNode('33142');
+            stop.addChildElement('country', null, null).addTextNode('USA');
 
-                stop.addChildElement('city', null, null).addTextNode('Fort Dix');
-                stop.addChildElement('state', null, null).addTextNode(shippingState);
-                stop.addChildElement('postal', null, null).addTextNode(shippingZip);
-                stop.addChildElement('country', null, null).addTextNode('USA');
+                // stop.addChildElement('city', null, null).addTextNode('Fort Dix');
+                // stop.addChildElement('state', null, null).addTextNode(shippingState);
+                // stop.addChildElement('postal', null, null).addTextNode(shippingZip);
+                // stop.addChildElement('country', null, null).addTextNode('USA');
 
                 dom.XmlNode details = stop.addChildElement('details', null, null);
+
                 for (welisacommerce__Shopping_Cart_Item__c shoppingCartItem : listShoppingCartItems) {
                     // System.debug(shoppingCartItem.unit_weight__c);
                     dom.XmlNode detail = details.addChildElement('detail', null, null); 
@@ -79,7 +79,6 @@ public with sharing class CreateXML {
 
 
                 dom.XmlNode accessorials = stop.addChildElement('accessorials', null, null);
-
                     accessorials.addChildElement('inside', null, null).addTextNode('');
                     accessorials.addChildElement('liftgate', null, null).addTextNode('');
                     accessorials.addChildElement('notify', null, null).addTextNode('');
